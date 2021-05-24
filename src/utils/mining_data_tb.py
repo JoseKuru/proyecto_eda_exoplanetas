@@ -27,3 +27,11 @@ def eliminar_columnas_nan(df: pd.DataFrame, porcentaje_minimo: int):
     for columna in columnas:
         del df[columna]
         print(f'Eliminada columna {columna}')
+
+def convertir_a_grados_decimales(datos: str):
+    grados_decimales = 0
+    grados_horas_minutos = datos.split(' ')
+    grados_decimales += int(grados_horas_minutos[0])
+    grados_decimales += int(grados_horas_minutos[1])/60
+    grados_decimales += float(grados_horas_minutos[2])/3600
+    return grados_decimales
