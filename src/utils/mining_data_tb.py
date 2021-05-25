@@ -15,7 +15,7 @@ def columnas_porcentaje_nan(df: pd.DataFrame, porcentaje_minimo: int):
     '''
     lista_columnas = []
     for colum in df.columns:
-        if df[colum].isna().sum() / df.shape[0] > porcentaje_minimo:
+        if df[colum].isna().mean() > porcentaje_minimo:
             lista_columnas.append(colum)
     return lista_columnas
 
