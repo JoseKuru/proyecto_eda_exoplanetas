@@ -5,16 +5,28 @@ import seaborn as sns
 
 
 def crear_boxplot(df: pd.DataFrame):
-    for colum in df.columns:
-        sns.boxplot(df[colum])
+    numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
+    newdf = df.select_dtypes(include=numerics)
+    for colum in newdf.colum:
+        fig, ax = plt.subplots()
+        sns.boxplot(ax=ax, data=df[colum])
+        ax.set_title(colum)
+        return fig
 
 def bins_freedman(serie: pd.Series):
+    # Calcula el numero de bins de un histograma segun la regla de Freedman–Diaconis
     iqr = serie.quantile(0.75) - serie.quantile(0.25)
-    print(iqr)
     numero_datos = serie.count()
-    print(numero_datos)
     h = 2 * iqr / (numero_datos ** (1/3))
-    print(h)
     numero_bins = (serie.max() - serie.min()) / h
-    print(numero_bins)
     return int(numero_bins)
+
+def outliers(df: pd.DataFrame):
+    for column in df.columns:
+        third_cuartil = df[column].quantile(0.75)
+        first_cuartil = df[column].quantile(0.25)
+        iqr = third_cuartil - first_cuartil
+        maximo = third_cuartil + (iqr * 1.5)
+        minimo = maximo = first_cuartil - (iqr * 1.5)
+        df = df[(df[column] > maximo) | (df[column] < minimo)]
+        crear_boxplot(df)

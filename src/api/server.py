@@ -10,4 +10,6 @@ if args.prueba == 8642:
 
     @app.route('/', methods=['GET'])
     def home():
-        pass
+        token = flask.request.args.get('tokenize_id')
+        if token == 'S':
+            

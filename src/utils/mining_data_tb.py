@@ -4,9 +4,9 @@ import pandas as pd
 
 def numero_nan(df : pd.DataFrame):
     '''
-    Retorna el numero de elementos NaN por cada columna
+    Retorna el porcentaje de elementos NaN por cada columna
     '''
-    return df.isna().sum()
+    return (df.isna().mean()) * 100
 
 def columnas_porcentaje_nan(df: pd.DataFrame, porcentaje_minimo: int):
     '''
