@@ -1,5 +1,8 @@
-import flask, argparse, sys, os
-import pandas as pd
+import flask, argparse, os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print(__file__)
+print(sys.path)
+from utils.apis_tb import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-x', '--X', type=int, help='Introduce el DNI del estudiante')
@@ -10,10 +13,10 @@ if args.X == 8642:
 
     @app.route('/', methods=['GET'])
     def home():
-        token = flask.request.args.get('tokenize_id')
-        if token == 'B49078469':
-            return pd.read_csv(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-                    + os.sep + 'data' + os.sep + 'phl_exoplanet_catalog_cleaned.csv').to_json()
-        return 'Token incorrecto'
+        
+        return comprobacion_token()
 
     app.run(host= '127.0.0.1', port=5000, debug=True)
+
+else:
+    print('Contraseña incorrecta')
