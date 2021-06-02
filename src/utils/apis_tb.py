@@ -8,5 +8,6 @@ def comprobacion_token():
     token = flask.request.args.get('tokenize_id')
     if token == 'B49078469':
         return pd.read_csv(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-                + os.sep + 'data' + os.sep + 'phl_exoplanet_catalog_cleaned.csv').to_json()
+                + os.sep + 'data' + os.sep + 'phl_exoplanet_catalog_cleaned.csv').to_json(indent=4)
     return 'Token incorrecto'
+

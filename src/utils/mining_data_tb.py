@@ -48,3 +48,9 @@ def rellenar_nan(df: pd.DataFrame):
     transform = imp.fit_transform(df.iloc[:, 2:].values)
     df = pd.concat([df.iloc[:, :2], pd.DataFrame(transform, columns=df.columns[2:])], axis=1)
     return df
+    
+def modificar_columnas(df):
+    columnas_escogidas = ['P_NAME', 'P_DETECTION', 'P_MASS', 'P_RADIUS_EST', 'P_PERIOD', 'P_ESI', 'P_GRAVITY', 'P_DENSITY', 'P_DISTANCE', 'S_DISTANCE', 'S_RADIUS_EST', 'S_TYPE', 'S_RA_H', 'S_DEC_T']
+    df = df[columnas_escogidas]
+    df.rename({'P_NAME': 'Nombre', 'P_DETECTION': 'Metodo_deteccion', 'P_MASS': 'Masa', 'P_RADIUS_EST': 'Radio', 'P_PERIOD': 'Periodo_orbital', 'P_ESI': 'Indice_similitud_tierra', 'P_GRAVITY': 'Gravedad', 'P_DENSITY': 'Densidad', 'P_DISTANCE': 'Distancia_estrella', 'S_DISTANCE': 'Distancia_tierra', 'S_RADIUS_EST': 'Radio_estrella', 'S_TYPE': 'Tipo_estrella', 'S_RA_H': 'Ascension_recta', 'S_DEC_T': 'Declinacion'}, axis=1, inplace=True)
+    return df

@@ -1,13 +1,14 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
-import os
+import os, requests
 import plotly.express as px
 
 def dataframe():
     '''Función que devuelve el json de exoplanetas a streamlit'''    
     st.write('Dataframe de exoplanetas')
-    st.table(pd.read_json('http://localhost:5000/?tokenize_id=B49078469'))
+    data = requests.get('http://localhost:5000/?tokenize_id=B49078469').json()
+    st.json(data)
 
 def bienvenida():
     st.title('Proyecto EDA: Exoplanetas')
@@ -18,3 +19,5 @@ def grafico_ESI():
     df = pd.read_csv(os.path.dirname(os.path.dirname(os.path.dirname(__file__))) + os.sep + 'data' + os.sep + 'phl_exoplanet_catalog_cleaned.csv')
     fig = px.scatter(df.query("Indice_similitud_tierra > 0.75"), x="Distancia_estrella", y='Distancia_tierra', size="Radio_estrella",hover_name="Nombre", size_max=30, color='Indice_similitud_tierra', title='Planetas potencialmente habitables')
     st.plotly_chart(fig)
+    st.write('Datase limpio')
+    st.table(pd.read_csv('../../data/phl_exoplanet_catalog_cleaned.csv'))

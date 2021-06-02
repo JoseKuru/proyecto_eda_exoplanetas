@@ -1,11 +1,11 @@
 {
-    "project_name" : "",
-    "author" : "",
+    "project_name" : "Exoplanetas. En busca de nuevas Tierras",
+    "author" : "José Carlos Batista Rivero",
     "linkedin" : "",
-    "e-mail" : "",
-    "project_title" : "",
-    "project_description" : "",
-    "flask_port" : "",
-    "streamlit_port" : "",
-    "python_libraries_used" : ""
+    "e-mail" : "josecarlosbatistarivero@gmail.com",
+    "project_title" : "Exoplanetas. En busca de nuevas Tierras",
+    "project_description" : "En 2009 la NASA lanzó el telescopio Kepler, el mayor proyecto hasta la fecha para el descubrimiento de exoplanetas. Despues de 10 años, más de 4.000 planetas han sido confirmados, y una pregunta frecuente en la ciencia ficción empezó a tener sus primeras evidencias.\n¿Habrá planetas con condiciones similares a la tierra para ser colonizadas, y si es así, son frecuentes estos planetas en el universo?.\nVamos a realizar un estudio con los datos de los exoplanetas confirmados para intentar responder a estas preguntas.",
+    "flask_port" : 5000,
+    "streamlit_port" : 8501,
+    "python_libraries_used" : ["numpy", "pandas", "matplotlib", "seaborn", "plotly", "scikit-learn", "astropy", "requests", "streamlit"]
 }
